@@ -282,7 +282,7 @@ if not currentLayer then
 end
 
 if not maxHeight then
-	maxHeight = 15
+	maxHeight = 16
 end
 
 maxHeight = math.floor(maxHeight)
