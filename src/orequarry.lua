@@ -227,14 +227,15 @@ function emptyInventory(force)
 	for i=1, 16 do
 		if turtle.getItemCount(i) > 0 then
 			fastSelect(i)
-   			turtle.refuel()
-			while not turtle.drop() do
-				up()
-				chestHeight = chestHeight + 1
-				if chestHeight > maxChestHeight then
-					error("reached max chest height, stopping program")
-				end
-			end
+			   turtle.refuel()
+			   turtle.drop()
+			-- while not turtle.drop() do
+			-- 	up()
+			-- 	chestHeight = chestHeight + 1
+			-- 	if chestHeight > maxChestHeight then
+			-- 		error("reached max chest height, stopping program")
+			-- 	end
+			-- end
 		end
 	end
 	
