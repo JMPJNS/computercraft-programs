@@ -14,7 +14,9 @@ while true do
         break
     end
 
-    local func, err = load("return function() return " + message + " end")
+    ex = "return function() return " + message + " end"
+    print(ex)
+    local func, err = load(ex)
 
     if func then
         local ok, callable = pcall(func)
