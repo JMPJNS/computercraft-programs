@@ -14,7 +14,7 @@ while true do
         break
     end
 
-    ex = "return function() return " + message + " end"
+    ex = "return function() return " .. message .. " end"
     print(ex)
     local func, err = load(ex)
 
