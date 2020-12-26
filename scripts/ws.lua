@@ -27,12 +27,12 @@ while true do
             local ok, callable = pcall(func)
             if ok then
                 res = callable()
-                ws.send({label=label, res=res, req=data.req, ts=data.ts})
+                ws.send(textutils.serializeJSON({label=label, res=res, req=data.req, ts=data.ts}))
             else
-                ws.send("Execution error:", callable)
+                ws.send(textutils.serializeJSON({label=label, err="Execution error", f=callable req=data.req, ts=data.ts}))
             end
             else
-            ws.send("Compilation error:", err)
+                ws.send(textutils.serializeJSON({label=label, err="Compilation error", f=err req=data.req, ts=data.ts}))
         end
     end
 end
