@@ -13,7 +13,7 @@ wss.on('connection', function connection(ws) {
   
     ws.send(JSON.stringify({
         ts: Date.now(),
-        target: "No",
+        target: "NoYou",
         req: "2 + 2"
     }));
 });
