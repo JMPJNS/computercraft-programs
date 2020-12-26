@@ -6,7 +6,9 @@ end
 
 print("starting")
 
-ws.send("yes")
+label = os.getComputerLabel()
+
+ws.send(textutils.serializeJSON({label=label, login=true}))
 
 while true do
     local message = ws.receive()
@@ -14,18 +16,23 @@ while true do
         break
     end
 
-    ex = "return function() return " .. message .. " end"
-    print(ex)
-    local func, err = load(ex)
+    data = textutils.unserializeJSON(message)
+    print(message)
+    
+    if data.target = label
+        ex = "return function() return " .. data.req .. " end"
+        local func, err = load(ex)
 
-    if func then
-        local ok, callable = pcall(func)
-        if ok then
-            ws.send(callable())
-        else
-            ws.send("Execution error:", callable)
+        if func then
+            local ok, callable = pcall(func)
+            if ok then
+                res = callable()
+                ws.send({label=label, res=res, req=data.req, ts=data.ts})
+            else
+                ws.send("Execution error:", callable)
+            end
+            else
+            ws.send("Compilation error:", err)
         end
-        else
-        ws.send("Compilation error:", err)
     end
 end
