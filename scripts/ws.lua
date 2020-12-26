@@ -13,6 +13,17 @@ while true do
     if message == nil then
         break
     end
-    local func = load(message)
-    ws.send(func())
+
+    local func, err = load("return function() return " + message + " end")
+
+    if func then
+        local ok, callable = pcall(func)
+        if ok then
+            ws.send(callable())
+        else
+            ws.send("Execution error:", callable)
+        end
+        else
+        ws.send("Compilation error:", err)
+    end
 end
