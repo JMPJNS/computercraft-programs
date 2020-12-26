@@ -29,10 +29,10 @@ while true do
                 res = callable()
                 ws.send(textutils.serializeJSON({label=label, res=res, req=data.req, ts=data.ts}))
             else
-                ws.send(textutils.serializeJSON({label=label, err="Execution error", f=callable req=data.req, ts=data.ts}))
+                ws.send(textutils.serializeJSON({label=label, err="Execution error", f=callable, req=data.req, ts=data.ts}))
             end
             else
-                ws.send(textutils.serializeJSON({label=label, err="Compilation error", f=err req=data.req, ts=data.ts}))
+                ws.send(textutils.serializeJSON({label=label, err="Compilation error", f=err, req=data.req, ts=data.ts}))
         end
     end
 end
