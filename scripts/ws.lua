@@ -18,8 +18,8 @@ while true do
 
     data = textutils.unserializeJSON(message)
     print(message)
-    
-    if data.target = label
+
+    if data.target == label then
         ex = "return function() return " .. data.req .. " end"
         local func, err = load(ex)
 

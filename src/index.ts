@@ -11,9 +11,9 @@ wss.on('connection', function connection(ws) {
       console.log('received: %s', message);
     });
   
-    ws.send({
+    ws.send(JSON.stringify({
         ts: Date.now(),
         target: "No",
         req: "2 + 2"
-    });
+    }));
 });
